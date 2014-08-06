@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A99996D19917859001A0ADA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A99996B19917859001A0ADA /* HomeViewController.swift */; };
+		4A99996E19917859001A0ADA /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A99996C19917859001A0ADA /* ImageViewController.swift */; };
+		4A9999701991A2D0001A0ADA /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A99996F1991A2D0001A0ADA /* PublishViewController.swift */; };
 		4AB3243D19902F9900E94DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB3243C19902F9900E94DB4 /* AppDelegate.swift */; };
-		4AB3243F19902F9900E94DB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB3243E19902F9900E94DB4 /* ViewController.swift */; };
 		4AB3244219902F9900E94DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AB3244019902F9900E94DB4 /* Main.storyboard */; };
 		4AB3244419902F9900E94DB4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AB3244319902F9900E94DB4 /* Images.xcassets */; };
 		4AB3245019902F9900E94DB4 /* ClassroomTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB3244F19902F9900E94DB4 /* ClassroomTests.swift */; };
@@ -25,13 +27,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4AB3243719902F9900E94DB4 /* Classroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Classroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A99996B19917859001A0ADA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4A99996C19917859001A0ADA /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		4A99996F1991A2D0001A0ADA /* PublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
+		4AB3243719902F9900E94DB4 /* Open Door.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open Door.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB3243B19902F9900E94DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AB3243C19902F9900E94DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4AB3243E19902F9900E94DB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4AB3244119902F9900E94DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4AB3244319902F9900E94DB4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4AB3244919902F9900E94DB4 /* ClassroomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClassroomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AB3244919902F9900E94DB4 /* Open DoorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Open DoorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB3244E19902F9900E94DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4AB3244F19902F9900E94DB4 /* ClassroomTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassroomTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,8 +70,8 @@
 		4AB3243819902F9900E94DB4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4AB3243719902F9900E94DB4 /* Classroom.app */,
-				4AB3244919902F9900E94DB4 /* ClassroomTests.xctest */,
+				4AB3243719902F9900E94DB4 /* Open Door.app */,
+				4AB3244919902F9900E94DB4 /* Open DoorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,8 +79,10 @@
 		4AB3243919902F9900E94DB4 /* Classroom */ = {
 			isa = PBXGroup;
 			children = (
+				4A99996B19917859001A0ADA /* HomeViewController.swift */,
+				4A99996C19917859001A0ADA /* ImageViewController.swift */,
+				4A99996F1991A2D0001A0ADA /* PublishViewController.swift */,
 				4AB3243C19902F9900E94DB4 /* AppDelegate.swift */,
-				4AB3243E19902F9900E94DB4 /* ViewController.swift */,
 				4AB3244019902F9900E94DB4 /* Main.storyboard */,
 				4AB3244319902F9900E94DB4 /* Images.xcassets */,
 				4AB3243A19902F9900E94DB4 /* Supporting Files */,
@@ -112,9 +118,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4AB3243619902F9900E94DB4 /* Classroom */ = {
+		4AB3243619902F9900E94DB4 /* Open Door */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4AB3245319902F9900E94DB4 /* Build configuration list for PBXNativeTarget "Classroom" */;
+			buildConfigurationList = 4AB3245319902F9900E94DB4 /* Build configuration list for PBXNativeTarget "Open Door" */;
 			buildPhases = (
 				4AB3243319902F9900E94DB4 /* Sources */,
 				4AB3243419902F9900E94DB4 /* Frameworks */,
@@ -124,14 +130,14 @@
 			);
 			dependencies = (
 			);
-			name = Classroom;
+			name = "Open Door";
 			productName = Classroom;
-			productReference = 4AB3243719902F9900E94DB4 /* Classroom.app */;
+			productReference = 4AB3243719902F9900E94DB4 /* Open Door.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4AB3244819902F9900E94DB4 /* ClassroomTests */ = {
+		4AB3244819902F9900E94DB4 /* Open DoorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4AB3245619902F9900E94DB4 /* Build configuration list for PBXNativeTarget "ClassroomTests" */;
+			buildConfigurationList = 4AB3245619902F9900E94DB4 /* Build configuration list for PBXNativeTarget "Open DoorTests" */;
 			buildPhases = (
 				4AB3244519902F9900E94DB4 /* Sources */,
 				4AB3244619902F9900E94DB4 /* Frameworks */,
@@ -142,9 +148,9 @@
 			dependencies = (
 				4AB3244B19902F9900E94DB4 /* PBXTargetDependency */,
 			);
-			name = ClassroomTests;
+			name = "Open DoorTests";
 			productName = ClassroomTests;
-			productReference = 4AB3244919902F9900E94DB4 /* ClassroomTests.xctest */;
+			productReference = 4AB3244919902F9900E94DB4 /* Open DoorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -165,7 +171,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4AB3243219902F9900E94DB4 /* Build configuration list for PBXProject "Classroom" */;
+			buildConfigurationList = 4AB3243219902F9900E94DB4 /* Build configuration list for PBXProject "Open Door" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -178,8 +184,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4AB3243619902F9900E94DB4 /* Classroom */,
-				4AB3244819902F9900E94DB4 /* ClassroomTests */,
+				4AB3243619902F9900E94DB4 /* Open Door */,
+				4AB3244819902F9900E94DB4 /* Open DoorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -208,8 +214,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AB3243F19902F9900E94DB4 /* ViewController.swift in Sources */,
+				4A9999701991A2D0001A0ADA /* PublishViewController.swift in Sources */,
 				4AB3243D19902F9900E94DB4 /* AppDelegate.swift in Sources */,
+				4A99996E19917859001A0ADA /* ImageViewController.swift in Sources */,
+				4A99996D19917859001A0ADA /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +234,7 @@
 /* Begin PBXTargetDependency section */
 		4AB3244B19902F9900E94DB4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4AB3243619902F9900E94DB4 /* Classroom */;
+			target = 4AB3243619902F9900E94DB4 /* Open Door */;
 			targetProxy = 4AB3244A19902F9900E94DB4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -327,9 +335,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Classroom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Open Door";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -338,9 +349,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Classroom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Open Door";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -358,7 +372,7 @@
 				);
 				INFOPLIST_FILE = ClassroomTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Open DoorTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -373,7 +387,7 @@
 				);
 				INFOPLIST_FILE = ClassroomTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Open DoorTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
@@ -381,7 +395,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4AB3243219902F9900E94DB4 /* Build configuration list for PBXProject "Classroom" */ = {
+		4AB3243219902F9900E94DB4 /* Build configuration list for PBXProject "Open Door" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4AB3245119902F9900E94DB4 /* Debug */,
@@ -390,21 +404,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4AB3245319902F9900E94DB4 /* Build configuration list for PBXNativeTarget "Classroom" */ = {
+		4AB3245319902F9900E94DB4 /* Build configuration list for PBXNativeTarget "Open Door" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4AB3245419902F9900E94DB4 /* Debug */,
 				4AB3245519902F9900E94DB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		4AB3245619902F9900E94DB4 /* Build configuration list for PBXNativeTarget "ClassroomTests" */ = {
+		4AB3245619902F9900E94DB4 /* Build configuration list for PBXNativeTarget "Open DoorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4AB3245719902F9900E94DB4 /* Debug */,
 				4AB3245819902F9900E94DB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
