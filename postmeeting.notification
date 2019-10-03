@@ -1,0 +1,96 @@
+{
+  "templateId": "postmeeting",
+  "name": "Postmeeting Notification",
+  "description": "This notification is used to notify the user about a meeting that just ended",
+  "type": "notification",
+  "state": "published",
+  "createdBy": "system",
+  "payload": { 
+    "rootNode": { 
+      "condition": "size($state['events'])>0 && argot:isSessionActive($uuid, $input['target']) != true", 
+      "executor": { 
+      "executorClassName": "com.tactile.cogent.decision.ScriptExecutor", 
+      "params": { 
+        "script": "
+var isEventEligibleForNotification = function(uuid, event) {
+  var subject = event:getSubject(event);
+  var cancelled = (subject =^ 'Canceled Event: ') || (subject =^ 'Cancelled Event: ') || (subject =^ 'Canceled: ') || (subject =^ 'Cancelled: ');
+  return !event:isDeleted(event) && !event:isHidden(uuid, event) && event:isActivity(uuid, event) && !event:isAllDay(event) && !cancelled;
+}
+
+var events = vault:getEvents($uuid, -10800000l);
+if(events != null) {
+  $state['events'] = new('java.util.HashMap');
+  for(var event : events) {
+    if(isEventEligibleForNotification($uuid, event)) {
+      var eventId = event.getSourceBlockId();
+      var endTimeStamp = null;
+      if(event.getSourceBlockId() =^ 'tactapp') {
+        endTimeStamp = event.getSourceFieldValue('EndDateTime');
+      }
+      var now = datetime:timestampLocal();
+      var metaFields = event.getMetaFields();
+      $logger.info('Checking event: ' + eventId);
+      var postmeeting_notified_target = 'postmeeting_notified_'+$input['target'];
+      if((postmeeting_notified_target !~ metaFields || metaFields[postmeeting_notified_target].value != 'true') && endTimeStamp != null && now>endTimeStamp && (now - endTimeStamp <= 1800)) {
+        $logger.info('Event ' + eventId + ' not notified');
+        var whatId = event.getSourceFieldValue('WhatId_tact');
+        var address = event.getSourceFieldValue('Location');
+        var datetime = datetime:secondsTimestampToDateTime(event.getSourceFieldValue('StartDateTime'), \"yyyy-MM-dd'T'HH:mm:ss.SSSZ\");
+        if(whatId != null && datetime!=null) {
+          var account = vault:getAccount($uuid, json:asString(json:asObject(whatId), 'identifier'), true);
+          var salutation = account.getSourceFieldValue('Account_Type__c')=='Doctor' ? 'Dr.' : '';
+          if(account != null && account.getSourceFieldValue('IsPersonAccount') == 'true') {
+            var isNovartisV2 = cogent:isCustomizationEnabled('NOVARTIS_V2');
+            var logs = salesforce:runSOQLQuery($uuid, \"select id from Call2_vod__c where Account_vod__r.id='\" + account.getSourceFieldValue('Id') + \"' and Call_Datetime_vod__c = TODAY and OwnerId = '\" + salesforce:getSalesforceUserId($uuid) + \"' and Status_vod__c in ('Submitted_vod', 'Saved_vod')\");
+            if(!isNovartisV2 || empty(logs)) {
+              $state['events'].put(eventId, {'event': event, 'accountid': account.getSourceFieldValue('Id'), 'doctor' : account.getSourceFieldValue('Name'), 'address' : address, 'datetime' : datetime, 'salutation' : salutation});
+            } else {
+              $logger.info('Event ' + eventId + ' already logged');
+            }
+          }
+        }
+      } else {
+        $logger.info('Event ' + eventId + ' already notified');
+      }
+    }
+  }
+}"
+        }
+      },
+      "successNode": {
+        "condition": "true",
+        "executor": { 
+          "executorClassName": "com.tactile.cogent.decision.ScriptExecutor", 
+          "params": { 
+            "script": "
+for(var eventKey : $state['events'].keySet()) {
+  var actionsData = cogent:executeActions('postmeeting', null);
+  var data = { 'accountid' : $state['events'][eventKey]['accountid'], 'address' : $state['events'][eventKey]['address'], 'datetime' : $state['events'][eventKey]['datetime'] };
+  for(var action : actionsData.getLegacyActions()) {
+    if(action.getType()=='ASSISTANT') {
+      $logger.info('Setting event '+eventKey+' as notified for post meeting for ' +$input['target']);
+      var postmeeting_notified_target = 'postmeeting_notified_'+$input['target'];
+      vault:setMetaFieldAndSave($uuid, $state['events'][eventKey]['event'], postmeeting_notified_target, 'true');
+      var disambiguationOptions = new('java.util.ArrayList');
+      for(var nextStep : action.getNextSteps()) {
+        var optionStr = new('java.util.ArrayList');
+        optionStr.add(nextStep.getLabel());
+        var pair = new('com.tactile.jacore.util.Pair', optionStr, nextStep.process(context.getUser(), data));
+        disambiguationOptions.add(pair);
+      }
+      var disambiguationDimensions = new('java.util.ArrayList');
+      disambiguationDimensions.add(new('com.tactile.jacore.pushintelligence.client.assistant.DisambiguationDimension', 0, '', ''));
+      action.setDisambiguationDimensions(disambiguationDimensions);
+      action.setDisambiguationOptions(disambiguationOptions);
+    }
+  }
+  var notification = new('com.tactile.jacore.pushintelligence.objects.NotificationData', 'postmeeting', cogent:executeNLG('postmeeting', { 'doctor' : $state['events'][eventKey]['doctor'], 'address' : $state['events'][eventKey]['address'], 'salutation' : $state['events'][eventKey]['salutation']}), $uuid, $input['target'], null, actionsData, 'v2');
+  argot:sendNotification(notification, $input['target']);
+}"
+          }
+        }
+      }
+    }
+  }
+}
